@@ -72,6 +72,9 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.min.js"
+        integrity="sha512-eviLb3jW7+OaVLz5N3B5F0hpluwkLb8wTXHOTy0CyNaZM5IlShxX1nEbODak/C0k9UdsrWjqIBKOFY0ELCCArw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@4"></script>
     <script>
@@ -132,6 +135,9 @@
         $(() => {
             $('#header').load('shared/header.html')
             $('#footer').load('shared/footer.html')
+            setTimeout(() => {
+                $('.lazy').lazy()
+            }, 1000)
         });
 
         // Print portfolio
@@ -139,9 +145,9 @@
             newR = r.split('|')
             $('#portfolio').append(`
                 <div class="pt-5">
-                    <img    class="object-scale-down h-100 w-100 rounded-t-lg border-solid border-2 border-black hover:cursor-pointer" 
+                    <img    class="object-scale-down h-100 w-100 rounded-t-lg border-solid border-2 border-black lazy" 
                             alt="${newR[0]}" onclick="toggleModal('modal-id', '${newR[0]}', './images/portofolio/${newR[1]}', '${newR[2]}')" 
-                            src="./images/portofolio/${newR[1]}">
+                            data-src="./images/portofolio/${newR[1]}">
                     <button class="bg-black hover:bg-green-900 text-white font-bold py-2 px-4" onclick="toggleModal('modal-id', '${newR[0]}', './images/portofolio/${newR[1]}', '${newR[2]}')">
                         ${newR[0]}
                     </button>
