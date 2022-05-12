@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BAYU RIFKI ALGHIFARI</title>
+    <meta name="description" content="-----">
+    <meta name="keywords" content="-----">
+    <meta name="author" content="------">
+
+    <!-- Font Awesome if you need it -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <!--Replace with your tailwind.css once created-->
+
+</head>
+
+<body class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover"
+    style="background-image:url('./images/bg.webp');">
+
+
+
+    <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
+
+        <!--Main Col-->
+        <div id="profile"
+            class="w-full lg:w-full rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-90 mx-6 lg:mx-0">
+
+
+            <div class="p-4 md:p-12 text-center lg:text-left">
+                <!-- Image for mobile view-->
+                <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center border-solid border-2 border-neutral-400"
+                    style="background-image: url('https://i.ibb.co/M16MfGq/eenmbl63ba054qhulm0cghk6j2721563final-1.jpg')">
+                </div>
+
+                <div class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-center"
+                    id="header">
+
+                </div>
+
+
+                <h1 class="text-3xl font-bold pt-8 lg:pt-0">My Portfolio</h1>
+                <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+
+                <div id="portfolio" class="grid lg:grid-cols-2 sm:grid-cols-1 gap-4 pt-8">
+
+                </div>
+
+                <div id="footer">
+
+                </div>
+
+
+                <!-- Use https://simpleicons.org/ to find the svg for your preferred product -->
+
+            </div>
+
+        </div>
+
+
+        <!-- Pin to top right corner -->
+        <div class="absolute top-0 right-0 h-12 w-18 p-4">
+            <button class="js-change-theme focus:outline-none">🌙</button>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script>
+    <script>
+        // list portofolio image
+        const portofolio = [
+            'Sikelim|2022/sikelim.png|https://sikelimkemkes.id/',
+            'E-learning BKPM|2021/bkpm.PNG|https://elearning.bkpm.go.id/',
+            'Zonaseller|2021/Zona-seller.PNG|https://zonaseller.com/',
+            'Tipbar.id|2020/Tipbar.id.PNG|https://tipbar.id/',
+            'Sistem Pakar|2020/Sipadi-pespa.PNG',
+            'Kemenkes|2020/Kemenkes.PNG',
+            'Indolancer|2020/indolancer.PNG|https://www.indolancer.id/',
+            'GoGrab|2020/GOGRAB.PNG',
+            'Web Berita Dinamik 2019|2019/webberita.PNG',
+            'Pemesanan Tiket Ujikom 2019|2019/ujikom.PNG',
+            'Absen QR - Code SMK TI GARNUS|2019/QR-Code.PNG',
+            'Proyek Management Jagad Creative|2019/Proyek Management.PNG',
+            'Aplikasi Koprasi Kartika Wiradhika|2019/Primer Koprasi Kartika Wiradhika.PNG',
+            'Online Shop|2019/Online Shop.PNG',
+            'Sistem Informasi Penyedian Barang|2019/Nanjung Supply Chain.PNG',
+            'My Huda|2019/My Huda.PNG',
+            'Management Hewan Qurban|2019/Management hewan qurban.PNG',
+            'Lelang Barang|2019/LELANG.PNG',
+            'E-Tiketing Seminar|2019/E tiketing.PNG',
+            'Sistem Informasi Absensi Pegawai|2019/E sakti.PNG',
+            'Chat App|2019/Chat app.PNG',
+        ]
+
+        //Init tooltips
+        tippy('.link', {
+            placement: 'bottom'
+        })
+
+        //Toggle mode
+        const toggle = document.querySelector('.js-change-theme');
+        const body = document.querySelector('body');
+        const profile = document.getElementById('profile');
+
+
+        toggle.addEventListener('click', () => {
+
+            if (body.classList.contains('text-gray-900')) {
+                toggle.innerHTML = "☀️";
+                body.classList.remove('text-gray-900');
+                body.classList.add('text-gray-100');
+                profile.classList.remove('bg-white');
+                profile.classList.add('bg-gray-900');
+            }
+            else {
+                toggle.innerHTML = "🌙";
+                body.classList.remove('text-gray-100');
+                body.classList.add('text-gray-900');
+                profile.classList.remove('bg-gray-900');
+                profile.classList.add('bg-white');
+            }
+        });
+
+        $(() => {
+            $('#header').load('shared/header.html')
+            $('#footer').load('shared/footer.html')
+        });
+
+        // Print portfolio
+        portofolio.map(r => {
+            newR = r.split('|')
+            $('#portfolio').append(`
+                <div class="pt-5">
+                    <img    class="object-scale-down h-100 w-100 rounded-t-lg border-solid border-2 border-black hover:cursor-pointer" 
+                            alt="${newR[0]}" onclick="toggleModal('modal-id', '${newR[0]}', './images/portofolio/${newR[1]}', '${newR[2]}')" 
+                            src="./images/portofolio/${newR[1]}">
+                    <button class="bg-black hover:bg-green-900 text-white font-bold py-2 px-4" onclick="toggleModal('modal-id', '${newR[0]}', './images/portofolio/${newR[1]}', '${newR[2]}')">
+                        ${newR[0]}
+                    </button>
+                </div>`)
+        });
+
+        // Toogle Modal
+        function toggleModal(modalID, title, src, href) {
+            $('#portfolio-title').html(title)
+            $('#' + modalID).toggleClass('hidden')
+            $('#' + modalID).toggleClass('flex')
+            $('#' + modalID + '-backdrop').toggleClass('hidden')
+            $('#' + modalID + '-backdrop').toggleClass('flex')
+            $('#portfolio-detail-img').attr('src', src)
+
+            if (href == 'undefined')
+                $('#portfolio-href').removeAttr('href')
+            else
+                $('#portfolio-href').attr('href', href)
+        }
+
+
+    </script>
+
+    <!-- Modal -->
+    <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+        id="modal-id">
+        <div class="relative w-auto my-6 mx-auto max-w-3xl">
+            <!--content-->
+            <div
+                class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <!--header-->
+                <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                    <h3 class="text-3xl font-semibold" id="portfolio-title">
+
+                    </h3>
+                    <button
+                        class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                        onclick="toggleModal('modal-id')">
+                        <span
+                            class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                            ×
+                        </span>
+                    </button>
+                </div>
+                <!--body-->
+                <div class="relative p-6 flex-auto">
+                    <img src="" class="object-scale-down h-100 w-100 rounded-t-lg border-solid border-2 border-black"
+                        id="portfolio-detail-img">
+                    <br>
+                    <a target="_blank" href="#" id="portfolio-href"
+                        class=" bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">Link</a>
+                </div>
+                <!--footer-->
+                <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                    <button
+                        class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button" onclick="toggleModal('modal-id')">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+</body>
+
+</html>
